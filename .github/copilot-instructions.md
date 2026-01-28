@@ -1,6 +1,6 @@
-# AI Rules for {{project-name}}
+# AI Rules for VibeTravels
 
-{{project-description}}
+VibeTravels is a travel planning application that leverages AI to generate personalized travel itineraries based on user preferences. The platform allows users to select travel styles, traveler types, and interests to create customized travel plans. It includes features for managing user profiles, saving travel plans, and ensuring data security through row-level security policies.
 
 ## Tech Stack
 

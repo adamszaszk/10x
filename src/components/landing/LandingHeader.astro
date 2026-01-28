@@ -1,0 +1,49 @@
+---
+import { Button } from "@/components/ui/button";
+import { Plane } from "lucide-react";
+---
+
+<header
+  class="py-4 fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-950/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-800"
+>
+  <div class="container mx-auto px-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 font-bold text-xl text-stone-900 dark:text-stone-50">
+      <div class="bg-primary/10 p-2 rounded-lg text-primary">
+        <Plane className="w-5 h-5" />
+      </div>
+      VibeTravels
+    </a>
+    <div class="flex items-center gap-4">
+      {
+        Astro.locals.user ? (
+          <>
+            <a
+              href="/profile"
+              class="text-sm font-medium text-stone-600 dark:text-stone-400 hidden md:inline-block hover:text-stone-900 dark:hover:text-stone-200 transition-colors"
+              title="Go to Profile"
+            >
+              {Astro.locals.user.email}
+            </a>
+            <Button variant="ghost" asChild>
+              <a href="/dashboard">Dashboard</a>
+            </Button>
+            <form action="/api/auth/logout" method="POST">
+              <Button variant="outline" type="submit">
+                Sign Out
+              </Button>
+            </form>
+          </>
+        ) : (
+          <>
+            <Button variant="ghost" asChild>
+              <a href="/login">Sign In</a>
+            </Button>
+            <Button asChild>
+              <a href="/login">Get Started</a>
+            </Button>
+          </>
+        )
+      }
+    </div>
+  </div>
+</header>

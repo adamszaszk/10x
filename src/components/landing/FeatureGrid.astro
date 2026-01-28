@@ -1,0 +1,40 @@
+---
+import FeatureCard from "./FeatureCard.astro";
+
+const features = [
+  {
+    title: "AI-Powered Itineraries",
+    description: "Generate comprehensive travel plans in seconds based on your personal preferences and interests.",
+    icon: "sparkles" as const,
+  },
+  {
+    title: "Smart Personalization",
+    description: "Our AI learns from your travel style to suggest destinations and activities you'll actually love.",
+    icon: "heart" as const,
+  },
+  {
+    title: "Global Coverage",
+    description: "From hidden gems to popular hotspots, get detailed guides for destinations worldwide.",
+    icon: "globe" as const,
+  },
+];
+---
+
+<section id="features" class="py-20 bg-stone-50 dark:bg-stone-950">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-stone-900 dark:text-stone-100">Why VibeTravels?</h2>
+      <p class="text-lg text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
+        Experience a new era of travel planning where technology meets wanderlust.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        features.map((feature) => (
+          <FeatureCard title={feature.title} description={feature.description} icon={feature.icon} />
+        ))
+      }
+    </div>
+  </div>
+</section>

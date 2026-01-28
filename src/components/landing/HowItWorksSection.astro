@@ -1,0 +1,45 @@
+---
+const steps = [
+  {
+    title: "Tell us your preferences",
+    description: "Share your travel style, interests, and past experiences to help us understand you.",
+  },
+  {
+    title: "Input your ideas",
+    description: "Simply type where you want to go or what kind of trip you're dreaming of.",
+  },
+  {
+    title: "Get your plan",
+    description: "Receive a detailed, day-by-day itinerary complete with recommendations and tips.",
+  },
+];
+---
+
+<section class="py-20 bg-white dark:bg-stone-900 border-t border-stone-100 dark:border-stone-800">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-stone-900 dark:text-stone-100">How It Works</h2>
+      <p class="text-lg text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
+        Planning your dream trip has never been this tailored and effortless.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+      <!-- Connecting line for desktop -->
+      <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-stone-200 dark:bg-stone-800 -z-10">
+      </div>
+
+      {
+        steps.map((step, index) => (
+          <div class="flex flex-col items-center text-center relative z-10">
+            <div class="w-24 h-24 rounded-full bg-white dark:bg-stone-900 border-4 border-primary/20 flex items-center justify-center mb-6 shadow-sm">
+              <span class="text-3xl font-bold text-primary">{index + 1}</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-stone-900 dark:text-stone-100">{step.title}</h3>
+            <p class="text-stone-600 dark:text-stone-400 max-w-sm">{step.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

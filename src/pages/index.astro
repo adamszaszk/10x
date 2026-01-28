@@ -1,8 +1,16 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/landing/HeroSection.astro";
+import FeatureGrid from "../components/landing/FeatureGrid.astro";
+import HowItWorksSection from "../components/landing/HowItWorksSection.astro";
+import LandingFooter from "../components/landing/LandingFooter.astro";
 ---
 
-<Layout>
-  <Welcome />
+<Layout title="VibeTravels - Your AI Travel Planner">
+  <main class="flex flex-col min-h-screen">
+    <HeroSection />
+    <FeatureGrid />
+    <HowItWorksSection />
+  </main>
+  <LandingFooter />
 </Layout>

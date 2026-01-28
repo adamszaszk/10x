@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { PlanListContainer } from "../../components/plans/PlanListContainer";
+
+// Server-side auth check
+if (!Astro.locals.user) {
+  return Astro.redirect("/login");
+}
+---
+
+<Layout title="My Plans">
+  <div class="min-h-screen bg-stone-50 dark:bg-stone-950 pt-20">
+    <PlanListContainer client:load />
+  </div>
+</Layout>

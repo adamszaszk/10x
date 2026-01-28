@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProfileContainer from "../components/profile/ProfileContainer";
+
+// Server-side auth check
+if (!Astro.locals.user) {
+  return Astro.redirect("/login");
+}
+---
+
+<Layout title="Your Profile - VibeTravels">
+  <div class="min-h-screen bg-stone-50 dark:bg-stone-950 pt-20">
+    <main>
+      <ProfileContainer client:load />
+    </main>
+  </div>
+</Layout>

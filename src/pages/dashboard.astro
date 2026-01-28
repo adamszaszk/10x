@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import DashboardContainer from "../components/dashboard/DashboardContainer";
+
+// Server-side auth check
+if (!Astro.locals.user) {
+  return Astro.redirect("/login");
+}
+---
+
+<Layout title="Dashboard - VibeTravels">
+  <div class="min-h-screen bg-stone-50 dark:bg-stone-950 pt-20">
+    <main>
+      <DashboardContainer client:load />
+    </main>
+  </div>
+</Layout>

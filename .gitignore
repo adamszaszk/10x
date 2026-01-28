@@ -15,10 +15,24 @@ pnpm-debug.log*
 
 # environment variables
 .env
+.env.test
 .env.production
 
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# IDE setting folders
 .idea/
+.vscode/
+
+# Testing artifacts
+coverage/
+playwright-report/
+test-results/
+
+# OS metadata
+Thumbs.db
+
+# Supabase
+supabase/.branches/
+supabase/.temp/

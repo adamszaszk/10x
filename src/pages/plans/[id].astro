@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PlanDetailsContainer from "../../components/plans/PlanDetailsContainer";
+
+const { id } = Astro.params;
+const { supabase } = Astro.locals;
+
+// 1. Auth Check - Middleware should handle this but explicit check is safer
+if (!Astro.locals.user) {
+  return Astro.redirect("/login");
+}
+
+let plan = null;
+
+if (id) {
+  // 2. Fetch Plan
+  const { data, error: dbError } = await supabase.from("plans").select("*").eq("id", id).single();
+
+  if (!dbError && data) {
+    plan = data;
+  }
+}
+
+if (!plan) {
+  return Astro.redirect("/dashboard");
+}
+---
+
+<Layout title={plan ? `Plan for ${plan.destination_name || "Trip"}` : "Plan Details"}>
+  <div class="min-h-screen bg-stone-50 dark:bg-stone-950 pt-20 pb-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <PlanDetailsContainer client:load plan={plan} />
+    </div>
+  </div>
+</Layout>
