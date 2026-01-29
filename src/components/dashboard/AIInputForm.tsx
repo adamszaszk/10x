@@ -62,6 +62,7 @@ export const AIInputForm = ({ onPlanGenerated, disabled }: AIInputFormProps) => 
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           disabled={disabled || isLoading}
+          name="prompt"
         />
         <div className="flex justify-between items-center text-sm text-muted-foreground">
           <span>Be specific about your interests for better results.</span>

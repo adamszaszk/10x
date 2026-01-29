@@ -38,6 +38,7 @@ export const DeletePlanButton = ({ onConfirm, isDeleting }: DeletePlanButtonProp
           <AlertDialogAction
             onClick={onConfirm}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            data-test-id="confirm-delete-plan-button"
           >
             {isDeleting ? "Deleting..." : "Delete"}
           </AlertDialogAction>
