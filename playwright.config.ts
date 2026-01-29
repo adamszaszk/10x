@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 // Read from .env.test
 dotenv.config({ path: ".env.test" });
 
+const PORT = process.env.PORT ? Number(process.env.PORT) : 8080;
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
+
 const config: PlaywrightTestConfig = {
   testDir: "./test/e2e",
   timeout: 30 * 1000,
@@ -17,7 +20,7 @@ const config: PlaywrightTestConfig = {
   reporter: "html",
   use: {
     actionTimeout: 0,
-    baseURL: "http://localhost:8080", // Astro configured port
+    baseURL: BASE_URL,
     trace: "on-first-retry",
   },
   projects: [
@@ -30,7 +33,7 @@ const config: PlaywrightTestConfig = {
   ],
   webServer: {
     command: process.env.CI ? "npm run preview" : "npm run dev:e2e",
-    port: 8080,
+    port: PORT,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
   },
