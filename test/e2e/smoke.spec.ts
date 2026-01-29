@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
 
 // Use a known existing user or a reliable way to authenticate in tests
-const TEST_EMAIL = process.env.E2E_USERNAME || "test@test.com";
-const TEST_PASSWORD = process.env.E2E_PASSWORD || "password";
+const TEST_EMAIL = process.env.E2E_USERNAME || "";
+const TEST_PASSWORD = process.env.E2E_PASSWORD || "";
 
 test.describe("VibeTravels Critical Path", () => {
   test("User can login, generate a plan, save it, and then delete it", async ({ page }) => {
