@@ -63,13 +63,6 @@ jobs:
       - name: Install OTA Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Build App
-        run: npm run build:e2e
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL_TEST }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY_TEST }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-
       - name: Run E2E tests
         run: npx playwright test
 
