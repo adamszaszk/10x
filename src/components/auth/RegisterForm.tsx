@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { Alert, AlertDescription } from '../ui/alert';
-import { Loader2 } from 'lucide-react';
+import { useState } from "react";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { Alert, AlertDescription } from "../ui/alert";
+import { Loader2 } from "lucide-react";
 
 interface RegisterFormProps {
   onSuccess: () => void;
 }
 
 export function RegisterForm({ onSuccess }: RegisterFormProps) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -21,22 +21,22 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
     setError(null);
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError("Password must be at least 6 characters");
       return;
     }
 
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
@@ -44,13 +44,13 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Failed to sign up');
+        setError(data.error || "Failed to sign up");
         setIsLoading(false);
       } else {
         onSuccess();
       }
-    } catch (err) {
-      setError('An unexpected error occurred');
+    } catch {
+      setError("An unexpected error occurred");
       setIsLoading(false);
     }
   };

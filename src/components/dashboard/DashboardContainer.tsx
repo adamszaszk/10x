@@ -68,7 +68,7 @@ export default function DashboardContainer() {
       });
 
       if (!res.ok) throw new Error("Failed to save plan");
-      
+
       const newPlan = await res.json();
 
       // On success:

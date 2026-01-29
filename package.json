@@ -6,12 +6,14 @@
     "dev": "astro dev",
     "dev:e2e": "astro dev --mode test",
     "build": "astro build",
+    "build:e2e": "astro build --mode test",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@astrojs/node": "^9.4.3",

@@ -155,7 +155,7 @@ describe("DashboardContainer", () => {
     expect(saveCall[1].method).toBe("POST");
 
     await waitFor(() => {
-      expect(window.location.reload).toHaveBeenCalled();
+      expect(window.location.href).toContain("/plans/");
     });
   });
 
