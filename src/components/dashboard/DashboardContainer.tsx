@@ -69,12 +69,13 @@ export default function DashboardContainer() {
 
       if (!res.ok) throw new Error("Failed to save plan");
 
+      const newPlan = await res.json();
+
       // On success:
       // 1. Clear generated plan (closes preview)
       setGeneratedPlan(null);
-      // 2. Refresh data (quota and recent plans)
-      // Ideally we refetch, for MVP simplicity we can reload or refetch
-      window.location.reload(); // Simple way to refresh data and show new plan in list
+      // 2. Redirect to the new plan details page
+      window.location.href = `/plans/${newPlan.id}`;
     } catch {
       alert("Failed to save plan. Please try again.");
     } finally {

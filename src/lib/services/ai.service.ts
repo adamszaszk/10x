@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { GeneratePlanCommand, GeneratedPlanDto } from "../../types";
 import { GeneratedPlanDtoSchema } from "../schemas/ai.schema";
 import { openRouterService } from "./openrouter.service";
+import { mockAiService } from "./mock-ai.service";
 
 export class QuotaExceededError extends Error {
   constructor(message = "Monthly generation quota exceeded") {
@@ -40,15 +41,21 @@ export class AIService {
     const systemPrompt = buildSystemPrompt();
     const userPrompt = buildUserPrompt(command.prompt, profile);
 
-    // Call Real AI Service
-    const generatedPlan = await openRouterService.complete<GeneratedPlanDto>({
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt },
-      ],
-      schema: GeneratedPlanDtoSchema,
-      temperature: 0.7,
-    });
+    // Call Real AI Service or Mock
+    let generatedPlan: GeneratedPlanDto;
+
+    if (import.meta.env.MOCK_AI_RESPONSE === "true") {
+      generatedPlan = await mockAiService.complete();
+    } else {
+      generatedPlan = await openRouterService.complete<GeneratedPlanDto>({
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt },
+        ],
+        schema: GeneratedPlanDtoSchema,
+        temperature: 0.7,
+      });
+    }
 
     // Increment Quota
     const { error: updateError } = await supabase

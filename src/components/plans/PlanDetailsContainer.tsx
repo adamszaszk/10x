@@ -37,7 +37,7 @@ export default function PlanDetailsContainer({ plan }: PlanDetailsContainerProps
   });
 
   return (
-    <div className="container max-w-4xl mx-auto py-8 px-4">
+    <div className="container max-w-4xl mx-auto py-8 px-4" data-test-id="plan-details-container">
       <div className="mb-8">
         <Button variant="ghost" className="pl-0 mb-4 hover:bg-transparent hover:text-primary" asChild>
           <a href="/plans" className="flex items-center gap-2">

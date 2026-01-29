@@ -56,6 +56,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
         <Label htmlFor="email">Email</Label>
         <Input
           id="email"
+          name="email"
           type="email"
           placeholder="name@example.com"
           value={email}
@@ -73,7 +74,14 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
             Forgot password?
           </a>
         </div>
-        <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
       </div>
       <Button type="submit" className="w-full" disabled={isLoading}>
         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
