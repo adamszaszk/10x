@@ -249,7 +249,7 @@ export class OpenRouterService {
 
 // Instantiate the service with environment variables
 export const openRouterService = new OpenRouterService({
-  apiKey: import.meta.env.OPENROUTER_API_KEY ?? "",
+  apiKey: process.env.OPENROUTER_API_KEY || import.meta.env.OPENROUTER_API_KEY || "",
   siteUrl: import.meta.env.PUBLIC_SITE_URL,
   appName: import.meta.env.PUBLIC_APP_NAME ?? "VibeTravels",
   defaultModel: "google/gemini-2.0-flash-001",
