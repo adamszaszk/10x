@@ -59,6 +59,9 @@ jobs:
           echo "SUPABASE_URL=${{ secrets.SUPABASE_URL_TEST }}" >> .env.test
           echo "SUPABASE_KEY=${{ secrets.SUPABASE_KEY_TEST }}" >> .env.test
           echo "OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY }}" >> .env.test
+          echo "E2E_USERNAME=${{ secrets.E2E_USERNAME }}" >> .env.test
+          echo "E2E_PASSWORD=${{ secrets.E2E_PASSWORD }}" >> .env.test
+          echo "MOCK_AI_RESPONSE=true" >> .env.test
 
       - name: Build application for E2E
         run: npm run build:e2e
