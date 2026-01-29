@@ -57,15 +57,17 @@ export class AIService {
       });
     }
 
-    // Increment Quota
-    const { error: updateError } = await supabase
-      .from("profiles")
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .update({ generation_count: currentCount + 1 } as any)
-      .eq("user_id", userId); // consistently use user_id
+    // Increment Quota (skip if mocking)
+    if (import.meta.env.MOCK_AI_RESPONSE !== "true") {
+      const { error: updateError } = await supabase
+        .from("profiles")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .update({ generation_count: currentCount + 1 } as any)
+        .eq("user_id", userId); // consistently use user_id
 
-    if (updateError) {
-      // We don't fail the request if this fails, but we should log it.
+      if (updateError) {
+        // We don't fail the request if this fails, but we should log it.
+      }
     }
 
     return generatedPlan;
