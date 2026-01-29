@@ -62,7 +62,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run E2E tests
-        run: npm run dev:e2e & npx playwright test
+        run: npx playwright test
 
   status-comment:
     name: PR Comment
