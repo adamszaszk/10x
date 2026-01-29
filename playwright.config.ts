@@ -29,7 +29,7 @@ const config: PlaywrightTestConfig = {
     },
   ],
   webServer: {
-    command: "npm run dev:e2e",
+    command: process.env.CI ? "npm run preview" : "npm run dev:e2e",
     port: 8080,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
