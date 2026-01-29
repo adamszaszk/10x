@@ -56,8 +56,8 @@ jobs:
 
       - name: Create .env.test
         run: |
-          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL_TEST }}" >> .env.test
-          echo "SUPABASE_KEY=${{ secrets.SUPABASE_KEY_TEST }}" >> .env.test
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env.test
+          echo "SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}" >> .env.test
           echo "OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY }}" >> .env.test
 
       - name: Install OTA Playwright browsers
