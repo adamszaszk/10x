@@ -38,7 +38,7 @@ export function RegisterForm() {
         body: JSON.stringify({
           email,
           password,
-          redirectTo: `${window.location.origin}/api/auth/callback`,
+          redirectTo: `${window.location.origin}/api/auth/callback?next=/profile`,
         }),
       });
 
