@@ -5,11 +5,7 @@ import { Label } from "../ui/label";
 import { Alert, AlertDescription } from "../ui/alert";
 import { Loader2, Mail } from "lucide-react";
 
-interface RegisterFormProps {
-  onSuccess: () => void;
-}
-
-export function RegisterForm({ onSuccess }: RegisterFormProps) {
+export function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -69,8 +65,8 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
         <div className="space-y-2">
           <h3 className="text-lg font-medium">Check your email</h3>
           <p className="text-sm text-muted-foreground">
-            We sent you a confirmation link to <strong>{email}</strong>.
-            Please check your inbox to activate your account.
+            We sent you a confirmation link to <strong>{email}</strong>. Please check your inbox to activate your
+            account.
           </p>
         </div>
         <Button variant="outline" className="w-full" onClick={() => window.location.reload()}>

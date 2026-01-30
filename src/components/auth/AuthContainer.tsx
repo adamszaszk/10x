@@ -13,10 +13,6 @@ export default function AuthContainer() {
     window.location.href = redirect || "/dashboard";
   };
 
-  const handleRegisterSuccess = () => {
-    window.location.href = "/profile";
-  };
-
   return (
     <div className="flex bg-stone-50 dark:bg-stone-950 items-center justify-center min-h-[calc(100vh-4rem)] p-4">
       <Card className="w-full max-w-md">
@@ -34,7 +30,7 @@ export default function AuthContainer() {
               <LoginForm onSuccess={handleLoginSuccess} />
             </TabsContent>
             <TabsContent value="register">
-              <RegisterForm onSuccess={handleRegisterSuccess} />
+              <RegisterForm />
             </TabsContent>
           </Tabs>
         </CardContent>
