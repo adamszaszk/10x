@@ -3,18 +3,15 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Alert, AlertDescription } from "../ui/alert";
-import { Loader2 } from "lucide-react";
+import { Loader2, Mail } from "lucide-react";
 
-interface RegisterFormProps {
-  onSuccess: () => void;
-}
-
-export function RegisterForm({ onSuccess }: RegisterFormProps) {
+export function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isEmailSent, setIsEmailSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,13 +48,33 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
         setError(data.error || "Failed to sign up");
         setIsLoading(false);
       } else {
-        onSuccess();
+        setIsEmailSent(true);
       }
     } catch {
       setError("An unexpected error occurred");
       setIsLoading(false);
     }
   };
+
+  if (isEmailSent) {
+    return (
+      <div className="flex flex-col items-center justify-center space-y-4 py-4 text-center">
+        <div className="rounded-full bg-green-100 p-3 dark:bg-green-900/20">
+          <Mail className="h-6 w-6 text-green-600 dark:text-green-400" />
+        </div>
+        <div className="space-y-2">
+          <h3 className="text-lg font-medium">Check your email</h3>
+          <p className="text-sm text-muted-foreground">
+            We sent you a confirmation link to <strong>{email}</strong>. Please check your inbox to activate your
+            account.
+          </p>
+        </div>
+        <Button variant="outline" className="w-full" onClick={() => window.location.reload()}>
+          Back to Sign Up
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
